@@ -4,7 +4,7 @@ SERVICES = nginx
 
 ${NAME}:
 	@cd srcs/ ; \
-	sudo docker-compose build ; \
+	sudo docker-compose up ; \
 	sudo docker-compose run ${SERVICES}
 
 all: ${NAME}
