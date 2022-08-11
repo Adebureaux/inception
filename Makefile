@@ -1,20 +1,16 @@
 NAME = inception
 
-SERVICES = nginx
-
-${NAME}:
-	@cd srcs/ ; \
-	sudo docker-compose up ; \
-	sudo docker-compose run ${SERVICES}
-
 all: ${NAME}
 
-clean:
-	@sudo docker rm nginx
+${NAME}:
+	@docker compose -f srcs/docker-compose.yml up -d --build
+
+stop:
+	@docker compose -f srcs/docker-compose.yml stop
 
 prune:
-	@sudo docker system prune -a
+	@docker system prune -a
 
-re: clean all
+re: prune all
 
-.PHONY: all clean prune re
+.PHONY: all stop prune re

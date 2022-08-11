@@ -1,11 +1,17 @@
-version: "3"
+version: "3.9"
 services:
   nginx:
-    build: requirements/nginx/
     container_name: nginx
+    build: requirements/nginx
+    image: nginx
+    env_file: .env
     ports:
-      - "443:443"
-    env_file:
-      .env
-    restart: always
+      - 443:443
+    networks:
+      - inception
+    restart: unless-stopped
 
+networks:
+  inception:
+    name: inception
+    driver: bridge
