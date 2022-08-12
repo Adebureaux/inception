@@ -17,7 +17,10 @@ restart:
 stop:
 	${COMPOSE} ${PATH_COMPOSE} stop
 
-debug:
+debug-nginx:
+	${COMPOSE} ${PATH_COMPOSE} exec nginx /bin/bash
+
+debug-wordpress:
 	${COMPOSE} ${PATH_COMPOSE} exec wordpress /bin/bash
 
 clean:

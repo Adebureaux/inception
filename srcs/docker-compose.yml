@@ -1,14 +1,18 @@
 version: "3"
 services:
+
   nginx:
     container_name: nginx
     build: requirements/nginx
     image: nginx
     ports:
       - 443:443
+    volumes:
+    - "/tmp/inception:/var/www/wordpress"
     networks:
       - inception
     restart: unless-stopped
+
   wordpress:
     container_name: wordpress
     build: requirements/wordpress
@@ -16,8 +20,13 @@ services:
     env_file: .env
     ports:
       - 9000:9000
+    volumes:
+    - "/tmp/inception:/var/www/wordpress"
     networks:
       - inception
+    restart: unless-stopped
+
+
 networks:
   inception:
     name: inception

@@ -1,5 +1,8 @@
 #!/bin/bash
 
-sleep 1000
+sleep 100
 
-php-fpm7 -F -R
+mv /tmp/wordpress/* /var/www/wordpress/
+chown -R www-data:www-data /var/www/*
+service mysql start
+service php7.3-fpm start
