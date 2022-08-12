@@ -1,16 +1,30 @@
 NAME = inception
+COMPOSE = docker-compose
+PATH_COMPOSE = -f srcs/docker-compose.yml
+VOLUMES = 
 
 all: ${NAME}
 
 ${NAME}:
-	@docker compose -f srcs/docker-compose.yml up -d --build
+	${COMPOSE} ${PATH_COMPOSE} up -d --build
+
+start:
+	${COMPOSE} ${PATH_COMPOSE} start
+
+restart:
+	${COMPOSE} ${PATH_COMPOSE} restart
 
 stop:
-	@docker compose -f srcs/docker-compose.yml stop
+	${COMPOSE} ${PATH_COMPOSE} stop
 
-prune:
-	@docker system prune -a
+debug:
+	${COMPOSE} ${PATH_COMPOSE} exec wordpress /bin/bash
 
-re: prune all
+clean:
+	${COMPOSE} ${PATH_COMPOSE} down
 
-.PHONY: all stop prune re
+fclean:
+	${COMPOSE} ${PATH_COMPOSE} down --rmi all --remove-orphans
+	docker image prune -f
+
+.PHONY: all start restart stop debug clean fclean
