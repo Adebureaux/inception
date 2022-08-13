@@ -1,7 +1,6 @@
 NAME = inception
 COMPOSE = docker-compose
 PATH_COMPOSE = -f srcs/docker-compose.yml
-VOLUMES = 
 
 all: ${NAME}
 
@@ -23,11 +22,14 @@ debug-nginx:
 debug-wordpress:
 	${COMPOSE} ${PATH_COMPOSE} exec wordpress /bin/bash
 
+debug-mariadb:
+	${COMPOSE} ${PATH_COMPOSE} exec mariadb /bin/bash
+
 clean:
-	${COMPOSE} ${PATH_COMPOSE} down
+	${COMPOSE} ${PATH_COMPOSE} down -v
 
 fclean:
-	${COMPOSE} ${PATH_COMPOSE} down --rmi all --remove-orphans
-	docker image prune -f
+	${COMPOSE} ${PATH_COMPOSE} down --rmi all --remove-orphans -v
+	bash fclean.sh
 
 .PHONY: all start restart stop debug clean fclean

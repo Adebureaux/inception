@@ -1,19 +1,19 @@
 FROM debian:buster
 
 RUN apt-get -y update
-RUN apt -y install wget
-RUN apt -y install mariadb-client
-RUN apt -y install php-fpm php-mysql
+RUN apt-get -y install wget
+RUN apt-get -y install mariadb-client
+RUN apt-get -y install php7.3-fpm php7.3-common php7.3-mysql
 
-#SETUP MYSQL
-RUN apt -y install mariadb-server
-COPY conf/wordpress.sql /tmp/
-COPY conf/mysql.sh /tmp/
-RUN bash /tmp/mysql.sh
+COPY conf/start.sh /tmp/
+COPY conf/www.conf /etc/php/7.3/fpm/pool.d/
 
-COPY conf/wp-config.php /var/www/wordpress/
-RUN cd /tmp && wget https://wordpress.org/latest.tar.gz && tar xzvf latest.tar.gz
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN cp wp-cli.phar /usr/bin/wp
 
-COPY conf/entrypoint.sh .
+RUN mkdir -p /var/run/php/
 
-ENTRYPOINT ["bash", "/entrypoint.sh"]
+WORKDIR /var/www/html/wordpress
+
+CMD ["bash", "/tmp/start.sh"]
