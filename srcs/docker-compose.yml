@@ -10,7 +10,7 @@ services:
     depends_on:
       - wordpress
     volumes:
-    - "~/Desktop/wordpress:/var/www/html/wordpress"
+    - "/tmp/wordpress:/var/www/html/wordpress"
     networks:
       - inception
     restart: unless-stopped
