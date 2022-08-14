@@ -25,8 +25,14 @@ debug-wordpress:
 debug-mariadb:
 	${COMPOSE} ${PATH_COMPOSE} exec mariadb /bin/bash
 
+ps:
+	${COMPOSE} ${PATH_COMPOSE} ps
+
+images:
+	${COMPOSE} ${PATH_COMPOSE} images
+
 clean:
-	${COMPOSE} ${PATH_COMPOSE} down -v
+	${COMPOSE} ${PATH_COMPOSE} down
 
 fclean:
 	${COMPOSE} ${PATH_COMPOSE} down --rmi all --remove-orphans -v
