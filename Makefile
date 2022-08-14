@@ -17,13 +17,13 @@ stop:
 	${COMPOSE} ${PATH_COMPOSE} stop
 
 debug-nginx:
-	${COMPOSE} ${PATH_COMPOSE} exec nginx /bin/bash
+	${COMPOSE} ${PATH_COMPOSE} exec nginx /bin/sh
 
 debug-wordpress:
-	${COMPOSE} ${PATH_COMPOSE} exec wordpress /bin/bash
+	${COMPOSE} ${PATH_COMPOSE} exec wordpress /bin/sh
 
 debug-mariadb:
-	${COMPOSE} ${PATH_COMPOSE} exec mariadb /bin/bash
+	${COMPOSE} ${PATH_COMPOSE} exec mariadb /bin/sh
 
 ps:
 	${COMPOSE} ${PATH_COMPOSE} ps

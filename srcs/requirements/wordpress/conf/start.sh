@@ -1,10 +1,4 @@
 #!/bin/bash
 
-if [ ! -f wp-config.php ]; then
-	wp core download --allow-root
-	# wp config create --dbname=wordpress --dbuser=admin --dbpass=admin --dbhost=localhost --dbcharset="utf8" --dbcollate="utf8_general_ci" --allow-root
-	# wp core install --url=$DOMAIN_NAME/wordpress --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
-	# wp user create $WP_USR $WP_EMAIL --role=author --user_pass=$WP_PWD --allow-root
-fi
-
-php-fpm7.3 -F -R
+wp core download --path=/var/www/wordpress --allow-root
+php-fpm7 -F -R
