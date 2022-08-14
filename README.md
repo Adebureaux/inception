@@ -12,3 +12,4 @@
 # DOCUMENTATION USED
 
 https://dbschema.com/documentation/MariaDb/
+https://www.linode.com/docs/guides/configure-wordpress-remote-database/
