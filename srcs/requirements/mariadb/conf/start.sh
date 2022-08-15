@@ -6,11 +6,11 @@ until mysqladmin ping; do
 	echo "(fail to ping)"
 done
 
-echo "CREATE DATABASE wordpress;" | mysql -u root
-echo "CREATE USER 'admin' identified by 'admin';" | mysql -u root
-echo "GRANT USAGE ON wordpress.* TO 'admin'@'%' identified by 'admin';" | mysql -u root
-echo "GRANT ALL PRIVILEGES ON wordpress.* TO 'admin'@'%' identified by 'admin';" | mysql -u root
-echo "FLUSH PRIVILEGES;" | mysql -u root
+echo "create database wordpress;" | mysql -u root
+echo "create user 'adeburea' identified by 'Jb5Td47G';" | mysql -u root
+echo "grant usage on wordpress.* TO 'adeburea'@'%' identified by 'Jb5Td47G';" | mysql -u root
+echo "grant all privileges on wordpress.* TO 'adeburea'@'%' identified by 'Jb5Td47G';" | mysql -u root
+echo "flush privileges;" | mysql -u root
 
 killall mysqld
 mysqld

@@ -12,5 +12,8 @@
 # DOCUMENTATION USED
 
 https://www.digitalocean.com/community/tutorials/understanding-and-implementing-fastcgi-proxying-in-nginx
-https://dbschema.com/documentation/MariaDb/
+https://www.hostinger.fr/tutoriels/wp-cli
+https://www.php.net/manual/en/install.fpm.configuration.php
 https://www.linode.com/docs/guides/configure-wordpress-remote-database/
+https://dbschema.com/documentation/MariaDb/
+https://exampleconfig.com/view/mariadb-ubuntu18-04-etc-mysql-mariadb-conf-d-50-server-cnf
