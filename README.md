@@ -11,5 +11,6 @@
 
 # DOCUMENTATION USED
 
+https://www.digitalocean.com/community/tutorials/understanding-and-implementing-fastcgi-proxying-in-nginx
 https://dbschema.com/documentation/MariaDb/
 https://www.linode.com/docs/guides/configure-wordpress-remote-database/
