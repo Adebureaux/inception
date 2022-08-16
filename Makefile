@@ -5,6 +5,8 @@ PATH_COMPOSE = -f srcs/docker-compose.yml
 all: ${NAME}
 
 ${NAME}:
+	@mkdir -p /home/$$USER/data/wordpress
+	@mkdir -p /home/$$USER/data/mariadb
 	${COMPOSE} ${PATH_COMPOSE} up -d --build
 
 start:
@@ -35,7 +37,7 @@ clean:
 	${COMPOSE} ${PATH_COMPOSE} down
 
 fclean:
-	${COMPOSE} ${PATH_COMPOSE} down --rmi all --remove-orphans
+	${COMPOSE} ${PATH_COMPOSE} down --rmi all
 	@bash srcs/fclean.sh
 
 .PHONY: all start restart stop debug clean fclean

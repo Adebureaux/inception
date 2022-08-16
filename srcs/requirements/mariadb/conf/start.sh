@@ -10,5 +10,4 @@ echo "grant usage on wordpress.* TO '$LOGIN'@'%' identified by '$PASSWORD';" | m
 echo "grant all privileges on wordpress.* TO '$LOGIN'@'%' identified by '$PASSWORD';" | mysql -u root
 echo "flush privileges;" | mysql -u root
 killall mysqld
-
 mysqld
