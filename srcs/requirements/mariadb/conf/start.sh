@@ -1,16 +1,16 @@
 #!/bin/bash
 
+# if $(find /var/lib/mysql/wordpress/ -type d -empty); then
+chown -R mysql:mysql /var/lib/wordpress
 mysqld&
 until mysqladmin ping; do
-	sleep 2
-	echo "(fail to ping)"
+	sleep 1
 done
-
 echo "create database wordpress;" | mysql -u root
-echo "create user 'adeburea' identified by 'Jb5Td47G';" | mysql -u root
-echo "grant usage on wordpress.* TO 'adeburea'@'%' identified by 'Jb5Td47G';" | mysql -u root
-echo "grant all privileges on wordpress.* TO 'adeburea'@'%' identified by 'Jb5Td47G';" | mysql -u root
+echo "create user '$LOGIN' identified by '$PASSWORD';" | mysql -u root
+echo "grant usage on wordpress.* TO '$LOGIN'@'%' identified by '$PASSWORD';" | mysql -u root
+echo "grant all privileges on wordpress.* TO '$LOGIN'@'%' identified by '$PASSWORD';" | mysql -u root
 echo "flush privileges;" | mysql -u root
-
 killall mysqld
+# fi
 mysqld
