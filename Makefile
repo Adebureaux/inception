@@ -35,7 +35,7 @@ clean:
 	${COMPOSE} ${PATH_COMPOSE} down
 
 fclean:
-	${COMPOSE} ${PATH_COMPOSE} down --rmi all --remove-orphans -v
+	${COMPOSE} ${PATH_COMPOSE} down --rmi all --remove-orphans
 	@bash srcs/fclean.sh
 
 .PHONY: all start restart stop debug clean fclean

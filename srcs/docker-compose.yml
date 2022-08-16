@@ -37,8 +37,8 @@ services:
     env_file: .env
     ports:
       - "3306:3306"
-    volumes:
-      - "/home/$USER/data/mariadb:/var/lib/mysql/wordpress"
+    # volumes:
+    #   - "/home/$USER/data/mariadb:/var/lib/mysql"
     networks:
       - inception
     restart: unless-stopped
