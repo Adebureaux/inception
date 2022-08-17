@@ -1,10 +1,11 @@
-NAME = inception
-COMPOSE = docker-compose
-PATH_COMPOSE = -f srcs/docker-compose.yml
+NAME			= inception
+COMPOSE			= docker-compose
+PATH_COMPOSE	= -f srcs/docker-compose.yml
 
 all: ${NAME}
 
 ${NAME}:
+	@cat /etc/hosts | if ! grep -P "127.0.0.1\tadeburea.42.fr"; then sudo sh -c 'echo "127.0.0.1\tadeburea.42.fr" >> /etc/hosts'; fi
 	@mkdir -p /home/$$USER/data/wordpress
 	@mkdir -p /home/$$USER/data/mariadb
 	${COMPOSE} ${PATH_COMPOSE} up -d --build
@@ -27,17 +28,11 @@ debug-wordpress:
 debug-mariadb:
 	${COMPOSE} ${PATH_COMPOSE} exec mariadb /bin/bash
 
-ps:
-	${COMPOSE} ${PATH_COMPOSE} ps
-
-images:
-	${COMPOSE} ${PATH_COMPOSE} images
-
 clean:
 	${COMPOSE} ${PATH_COMPOSE} down
 
 fclean:
-	${COMPOSE} ${PATH_COMPOSE} down --rmi all
+	${COMPOSE} ${PATH_COMPOSE} down --rmi all -v
 	@bash srcs/fclean.sh
 
-.PHONY: all start restart stop debug clean fclean
+.PHONY: all start restart stop debug-nginx debug-wordpress debug-mariadb clean fclean
