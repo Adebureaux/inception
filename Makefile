@@ -6,8 +6,8 @@ all: ${NAME}
 
 ${NAME}:
 	@cat /etc/hosts | if ! grep -P "127.0.0.1\tadeburea.42.fr"; then sudo sh -c 'echo "127.0.0.1\tadeburea.42.fr" >> /etc/hosts'; fi
-	@mkdir -p /home/$$USER/data/wordpress
-	@mkdir -p /home/$$USER/data/mariadb
+	@sudo mkdir -p /home/adeburea/data/wordpress
+	@sudo mkdir -p /home/adeburea/data/mariadb
 	${COMPOSE} ${PATH_COMPOSE} up -d --build
 
 start:

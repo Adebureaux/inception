@@ -10,6 +10,7 @@ if [ ! -d /var/lib/mysql/wordpress ]; then
 	echo "grant usage on wordpress.* TO '$LOGIN'@'%' identified by '$PASSWORD';" | mysql -u root
 	echo "grant all privileges on wordpress.* TO '$LOGIN'@'%' identified by '$PASSWORD';" | mysql -u root
 	echo "flush privileges;" | mysql -u root
+	echo "alter user 'root'@'localhost' identified by '$PASSWORD';" | mysql -u root
 	killall mysqld
 fi
 
